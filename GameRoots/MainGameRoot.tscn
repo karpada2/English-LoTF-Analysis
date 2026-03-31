@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1shkfy8efdt"]
+
+[ext_resource type="Script" uid="uid://ba2gpc5ixyn5u" path="res://GameRoots/MainGameRoot.gd" id="1_tmqmx"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_tmqmx"]
+
+[node name="MainGameRoot" type="Node2D"]
+script = ExtResource("1_tmqmx")
+metadata/_custom_type_script = "uid://ba2gpc5ixyn5u"
+
+[node name="LeaderChoosing" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="LeaderChoosing"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LeaderChoosing/CenterContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Directions" type="Label" parent="LeaderChoosing/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Choose Leader to play as"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LeaderChoosing/CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="RalphButton" type="Button" parent="LeaderChoosing/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_tmqmx")
+text = "Choose 
+Ralph"
+
+[node name="JackButton" type="Button" parent="LeaderChoosing/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_tmqmx")
+text = "Choose 
+Jack"
+
+[node name="ConfirmLeaderButton" type="Button" parent="LeaderChoosing/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+disabled = true
+text = "Start Game"
+
+[connection signal="toggled" from="LeaderChoosing/CenterContainer/VBoxContainer/HBoxContainer/RalphButton" to="." method="_on_ralph_button_toggled"]
+[connection signal="toggled" from="LeaderChoosing/CenterContainer/VBoxContainer/HBoxContainer/JackButton" to="." method="_on_jack_button_toggled"]
+[connection signal="pressed" from="LeaderChoosing/CenterContainer/VBoxContainer/ConfirmLeaderButton" to="." method="_on_confirm_leader_button_pressed"]
